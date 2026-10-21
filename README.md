@@ -1,0 +1,2 @@
+# Kalshi Calibration
+Kalshi, along with many other prediction markets operate in a system similar to this: at a 30¢, the traders are saying there is a 30% chance. This project will test whether if this is true by analyzing thousands of settled markets across Kalshi, and these observations will get visualized as charts where perfectly calibrated markets fall right on the diagonal line.
