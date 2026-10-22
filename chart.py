@@ -3,15 +3,17 @@ import matplotlib.pyplot as plt
 
 totals = [0] * 10
 yeses = [0] * 10
+price_sums = [0] * 10
 
 with open("markets.csv", "r") as f:
     reader = csv.DictReader(f)
 
     for row in reader:
         price = float(row["open_price"])
-        bucket = min(int(price * 10), 9)
+        bucket = min(int(price * 10), 6)
         totals[bucket] += 1
-
+        price_sums[bucket] += price
+        
         if row["result"] == "yes":
             yeses[bucket] += 1
 
@@ -22,9 +24,12 @@ for i in range(10):
     if totals[i] == 0:
         continue
     rate = yeses[i] / totals[i]
-    xs.append(i * 0.1 + 0.05)
+    xs.append(price_sums[i] / totals[i])
     ys.append(rate)
-    print(f"{i*10}-{(i+1)*10}¢: {totals[i]} markets, {rate:.0%} yes")
+    if i == 6:
+        print(f"{i*10}-{(i+4)*10}¢: {totals[i]} markets, {rate:.0%} yes")
+    elif i < 6:
+        print(f"{i*10}-{(i+1)*10}¢: {totals[i]} markets, {rate:.0%} yes")
 
 plt.plot([0, 1], [0, 1], "--", color="gray", label="perfect calibration")
 plt.plot(xs, ys, "o-", label="Kalshi temp")
