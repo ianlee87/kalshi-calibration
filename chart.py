@@ -27,10 +27,10 @@ for i in range(10):
     print(f"{i*10}-{(i+1)*10}¢: {totals[i]} markets, {rate:.0%} yes")
 
 plt.plot([0, 1], [0, 1], "--", color="gray", label="perfect calibration")
-plt.plot(xs, ys, "o-", label="Kalshi NYC temp")
+plt.plot(xs, ys, "o-", label="Kalshi temp")
 plt.xlabel("Opening price")
 plt.ylabel("Actual yes rate")
-plt.title("Kalshi calibration: NYC high temperature")
+plt.title("Kalshi calibration: NYC + Chicago high temperature")
 plt.legend()
 plt.savefig("calibration.png")
 plt.show()
