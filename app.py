@@ -44,7 +44,7 @@ for i in range(10):
         label = "60-100¢"
     elif i < 6:
         label = f"{i*10}-{(i+1)*10}¢"
-        table.append({"Bucket": label, "Markets": totals[i], "Yes rate": f"{rate:.0%}"})
+        table.append({"Bucket": label, "Markets": str(totals[i]), "Yes rate": f"{rate:.0%}"})
 
 fig, ax = plt.subplots()
 ax.plot([0, 1], [0, 1], "--", color="gray", label="perfect calibration")
